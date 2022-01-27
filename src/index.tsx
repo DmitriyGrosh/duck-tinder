@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import App from './app/App';
 import reportWebVitals from './reportWebVitals';
-import './firebase';
+import './firebase/firebase';
 
 import './index.css';
 

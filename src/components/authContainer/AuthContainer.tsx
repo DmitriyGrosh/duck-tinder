@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 import Wrapper from '../wrapper/Wrapper';
 import { useAppDispatch } from '../../redux/hooks';
 import { saveUser } from '../../redux/actions/user';
@@ -14,6 +15,7 @@ const AuthContainer: FC = ({ children }) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const payload: IUser = {
+          errors: null,
           authToken: user.refreshToken,
           email: user.email,
           name: user.uid,

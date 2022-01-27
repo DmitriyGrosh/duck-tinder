@@ -4,9 +4,10 @@ import { Provider } from 'react-redux';
 import { getAuth, signOut } from 'firebase/auth';
 
 import PrivateRouter from '../router/privateRouter/PrivateRouter';
-import Register from '../components/register/Register';
-import Login from '../components/login/Login';
 import AuthContainer from '../components/authContainer/AuthContainer';
+import Auth from '../views/auth/Auth';
+import { handleLogin } from '../firebase/login';
+import { handleRegister } from '../firebase/register';
 
 import store from '../redux';
 import { useAppDispatch } from '../redux/hooks';
@@ -56,8 +57,11 @@ const App: FC = () => {
                 }
               />
             </Route>
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
+            <Route
+              path="/register"
+              element={<Auth callback={handleRegister} />}
+            />
+            <Route path="/login" element={<Auth callback={handleLogin} />} />
           </Routes>
         </BrowserRouter>
       </AuthContainer>

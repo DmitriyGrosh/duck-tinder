@@ -1,25 +1,30 @@
 import { DELETE_USER, SAVE_USER } from '../actions/user';
 
+type InitialType = string | null;
+
 export interface IUser {
-  authToken: null | string;
-  email: null | string;
-  name: null | string;
+  authToken: InitialType;
+  email: InitialType;
+  name: InitialType;
+  errors: InitialType;
 }
 
 const initialState: IUser = {
   authToken: null,
   email: null,
   name: null,
+  errors: null,
 };
 
 // eslint-disable-next-line default-param-last
-const userReducer = (state = initialState, action: any) => {
+const userReducer = (state = initialState, action: any): IUser => {
   switch (action.type) {
     case DELETE_USER:
       return {
         authToken: null,
         email: null,
         name: null,
+        errors: null,
       };
     case SAVE_USER:
       return action.payload;
