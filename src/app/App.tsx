@@ -12,11 +12,11 @@ import './App.css';
 const App: FC = () => {
   return (
     <Provider store={store}>
-      <AuthContainer>
-        <BrowserRouter>
+      <BrowserRouter>
+        <AuthContainer>
           <Router />
-        </BrowserRouter>
-      </AuthContainer>
+        </AuthContainer>
+      </BrowserRouter>
     </Provider>
   );
 };

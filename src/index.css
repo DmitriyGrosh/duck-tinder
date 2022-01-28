@@ -15,6 +15,15 @@ code {
     monospace;
 }
 
+a,
+a:active,
+a:visited,
+a img {
+  outline: none;
+  text-decoration: none;
+  color: black;
+}
+
 #root {
   width: 100%;
   height: 100%;

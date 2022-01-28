@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { onSnapshot, collection } from '@firebase/firestore';
 
-import { useAppDispatch } from '../../redux/hooks';
-import { handleLogout } from '../../firebase/logout';
 import { db } from '../../firebase/firebase';
 
 interface IColor {
@@ -12,8 +10,6 @@ interface IColor {
 }
 
 const Main = () => {
-  const dispatch = useAppDispatch();
-
   const [colors, setColors] = useState<Array<IColor>>([]);
 
   useEffect(() => {
@@ -41,7 +37,6 @@ const Main = () => {
           );
         })}
       </div>
-      <button onClick={() => handleLogout(dispatch)}>logout</button>
     </div>
   );
 };
