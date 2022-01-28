@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-import Wrapper from '../wrapper/Wrapper';
+import Wrapper from '../wrapper';
 import { useAppDispatch } from '../../redux/hooks';
 import { saveUser } from '../../redux/actions/user';
 import { IUser } from '../../redux/reducers/user';
@@ -35,5 +35,7 @@ const AuthContainer: FC = ({ children }) => {
 
   return <Wrapper>{children}</Wrapper>;
 };
+
+AuthContainer.displayName = 'Auth Container';
 
 export default AuthContainer;

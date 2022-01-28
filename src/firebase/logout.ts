@@ -3,10 +3,10 @@ import { getAuth, signOut } from 'firebase/auth';
 import { deleteUser, saveUser } from '../redux/actions/user';
 import { IUser } from '../redux/reducers/user';
 
-export const handleLogout = (dispatch: Dispatch<any>) => {
+export const handleLogout = async (dispatch: Dispatch<any>) => {
   const auth = getAuth();
 
-  signOut(auth)
+  await signOut(auth)
     .then(() => {
       dispatch(deleteUser());
     })

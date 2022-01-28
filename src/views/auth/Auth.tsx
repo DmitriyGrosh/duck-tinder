@@ -8,14 +8,15 @@ import React, {
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Button from '../../components/button/Button';
-import Input from '../../components/input/Input';
+import Button from '../../components/button';
+import Input from '../../components/input';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import './Auth.scss';
 
 interface IAuth {
   callback: (email: string, password: string, dispatch: Dispatch<any>) => void;
+  isLogin: boolean;
 }
 
 interface IErrors {
@@ -23,7 +24,7 @@ interface IErrors {
   password: string;
 }
 
-const Auth: FC<IAuth> = ({ callback }) => {
+const Auth: FC<IAuth> = ({ callback, isLogin }) => {
   const navigate = useNavigate();
   const error = useAppSelector((state) => state.user.errors);
   const dispatch = useAppDispatch();
@@ -113,7 +114,7 @@ const Auth: FC<IAuth> = ({ callback }) => {
           className={errors.password === 'invalid' ? 'invalid' : ''}
         />
       </div>
-      <Button onClick={handleSubmit}>Login</Button>
+      <Button onClick={handleSubmit}>{isLogin ? 'Log in' : 'Sign in'}</Button>
       <div className="errors">{toErrorString()}</div>
     </div>
   );
