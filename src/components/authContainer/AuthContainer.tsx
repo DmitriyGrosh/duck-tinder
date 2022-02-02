@@ -15,10 +15,11 @@ const AuthContainer: FC = ({ children }) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const payload: IUser = {
+          id: user.uid,
           errors: null,
           authToken: user.refreshToken,
           email: user.email,
-          name: user.uid,
+          name: user.displayName,
         };
 
         dispatch(saveUser(payload));
@@ -33,7 +34,7 @@ const AuthContainer: FC = ({ children }) => {
     return <>Loading...</>;
   }
 
-  return <Wrapper>{children}</Wrapper>;
+  return <Wrapper isHeader>{children}</Wrapper>;
 };
 
 AuthContainer.displayName = 'Auth Container';

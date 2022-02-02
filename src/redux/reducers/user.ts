@@ -4,6 +4,7 @@ type InitialType = string | null;
 
 export interface IUser {
   authToken: InitialType;
+  id: InitialType;
   email: InitialType;
   name: InitialType;
   errors: InitialType;
@@ -14,6 +15,7 @@ const initialState: IUser = {
   email: null,
   name: null,
   errors: null,
+  id: null,
 };
 
 // eslint-disable-next-line default-param-last
@@ -25,6 +27,7 @@ const userReducer = (state = initialState, action: any): IUser => {
         email: null,
         name: null,
         errors: null,
+        id: null,
       };
     case SAVE_USER:
       return action.payload;

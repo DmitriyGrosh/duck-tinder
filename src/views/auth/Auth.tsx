@@ -15,13 +15,19 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import './Auth.scss';
 
 interface IAuth {
-  callback: (email: string, password: string, dispatch: Dispatch<any>) => void;
+  callback: (
+    email: string,
+    password: string,
+    dispatch: Dispatch<any>,
+    name?: string
+  ) => void;
   isLogin: boolean;
 }
 
 interface IErrors {
   email: string;
   password: string;
+  name: string;
 }
 
 const Auth: FC<IAuth> = ({ callback, isLogin }) => {
@@ -32,9 +38,11 @@ const Auth: FC<IAuth> = ({ callback, isLogin }) => {
   const [isNavigate, setIsNavigate] = useState<number>(0);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [name, setName] = useState<string>('');
   const [errors, setErrors] = useState<IErrors>({
     email: '',
     password: '',
+    name: '',
   });
 
   const passwordRegExp =
@@ -53,7 +61,7 @@ const Auth: FC<IAuth> = ({ callback, isLogin }) => {
   const handleSubmit = async () => {
     if (!!errors.email && !!errors.password) {
       if (errors.email === 'valid' && errors.password === 'valid') {
-        await callback(email, password, dispatch);
+        await callback(email, password, dispatch, name);
         setIsNavigate((prev) => prev + 1);
       }
     } else {
@@ -79,9 +87,16 @@ const Auth: FC<IAuth> = ({ callback, isLogin }) => {
     }
   };
 
+  const handleValidateName = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (e.target.value) {
+      setErrors((prevErrors) => ({ ...prevErrors, name: 'valid' }));
+    } else {
+      setErrors((prevErrors) => ({ ...prevErrors, name: 'invalid' }));
+    }
+  };
+
   const toErrorString = (): string => {
     let result = '';
-    console.log('==========>error', error);
 
     if (error?.includes('password')) result = 'Invalid password';
     if (error?.includes('email')) result = 'Invalid email';
@@ -99,6 +114,15 @@ const Auth: FC<IAuth> = ({ callback, isLogin }) => {
   return (
     <div className="auth-container">
       <div className="form-container">
+        {!isLogin && (
+          <Input
+            placeholder="name"
+            onChange={(e) => handleChangeData(e, setName)}
+            type="text"
+            onBlur={(e) => handleValidateName(e)}
+            className={errors.name === 'invalid' ? 'invalid' : ''}
+          />
+        )}
         <Input
           placeholder="email"
           onChange={(e) => handleChangeData(e, setEmail)}

@@ -14,8 +14,9 @@ export const handleLogin = async (
       const { user } = userCredential;
 
       const payload: IUser = {
+        name: user.displayName,
         authToken: user.refreshToken,
-        name: user.uid,
+        id: user.uid,
         email: user.email,
         errors: null,
       };
@@ -26,6 +27,7 @@ export const handleLogin = async (
       const errorMessage = error.message;
 
       const payload: IUser = {
+        id: null,
         authToken: null,
         name: null,
         email: null,

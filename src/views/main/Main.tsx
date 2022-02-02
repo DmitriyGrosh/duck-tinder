@@ -1,43 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { onSnapshot, collection } from '@firebase/firestore';
+import React from 'react';
 
-import { db } from '../../firebase/firebase';
+import Sidebar from '../../components/sidebar';
 
-interface IColor {
-  color: string;
-  hex: number;
-  isColor: boolean;
-}
+import Wrapper from '../../components/wrapper';
 
 const Main = () => {
-  const [colors, setColors] = useState<Array<IColor>>([]);
-
-  useEffect(() => {
-    onSnapshot(collection(db, 'colors'), (props) => {
-      const values: IColor[] = props.docs.map((doc) => doc.data() as IColor);
-      setColors(values);
-    });
-  }, []);
-
-  console.log('==========>render');
   return (
-    <div>
-      Welcome
-      <div>
-        {colors.map(({ color, isColor, hex }) => {
-          return (
-            <div key={color}>
-              {isColor ? (
-                <div>
-                  <p>Your color is {color}</p>
-                  <p>Your hex is {hex}</p>
-                </div>
-              ) : null}
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <Wrapper className="flexible" isHeader={false}>
+      <Sidebar />
+    </Wrapper>
   );
 };
 

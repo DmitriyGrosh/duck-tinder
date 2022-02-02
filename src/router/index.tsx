@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import PrivateRouter from './privateRouter';
 import Main from '../views/main';
 import Auth from '../views/auth';
+import User from '../views/user';
 
 import { handleRegister } from '../firebase/register';
 import { handleLogin } from '../firebase/login';
@@ -13,6 +14,9 @@ const Router = () => {
     <Routes>
       <Route path="/" element={<PrivateRouter />}>
         <Route path="/" element={<Main />} />
+      </Route>
+      <Route path="/user" element={<PrivateRouter />}>
+        <Route path="/user" element={<User />} />
       </Route>
       <Route path="*" element={<PrivateRouter />}>
         <Route
@@ -27,7 +31,14 @@ const Router = () => {
       </Route>
       <Route
         path="/register"
-        element={<Auth callback={handleRegister} isLogin={false} />}
+        element={
+          <Auth
+            callback={(email, password, dispatch, name) =>
+              handleRegister(email, password, dispatch, name)
+            }
+            isLogin={false}
+          />
+        }
       />
       <Route path="/login" element={<Auth callback={handleLogin} isLogin />} />
     </Routes>

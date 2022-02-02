@@ -14,6 +14,7 @@ export const handleLogout = async (dispatch: Dispatch<any>) => {
       const errorMessage = error.message;
 
       const payload: IUser = {
+        id: null,
         authToken: null,
         name: null,
         email: null,
