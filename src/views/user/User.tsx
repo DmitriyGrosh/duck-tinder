@@ -8,6 +8,8 @@ import UserAvatar from '../../components/UserAvatar/UserAvatar';
 import { useAppSelector } from '../../redux/hooks';
 import { storage, db } from '../../firebase/firebase';
 
+import './User.scss';
+
 export interface IUserResponse {
   email: string;
   id: string;
@@ -38,15 +40,20 @@ const User = () => {
   };
 
   return (
-    <>
-      <UserAvatar
-        setIsPending={setIsPending}
-        isPending={isPending}
-        setLocalPhoto={setLocalPhoto}
-        image={localPhoto}
-      />
-      <InputFile onChange={handleSetImage}>Uload file</InputFile>
-    </>
+    <div className="user">
+      <div className="left-side">
+        <UserAvatar
+          setIsPending={setIsPending}
+          isPending={isPending}
+          setLocalPhoto={setLocalPhoto}
+          image={localPhoto}
+        />
+        <InputFile onChange={handleSetImage}>Uload file</InputFile>
+      </div>
+      <div className="right-side">
+        <div>asddsa</div>
+      </div>
+    </div>
   );
 };
 

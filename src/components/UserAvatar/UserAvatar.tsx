@@ -34,16 +34,10 @@ const UserAvatar: FC<IUserAvatar> = ({
     querySnapshot.forEach((doc) => {
       const userData = doc.data() as IUserResponse;
       if (userData.isPhoto) {
-        getDownloadURL(ref(storage, `users/${id}.png`))
-          .then((url) => {
-            console.log('==========>url', url);
-            setIsPending(false);
-            setLocalPhoto(url);
-          })
-          .catch((e) => {
-            setIsPending(false);
-            console.log('==========>e', e);
-          });
+        getDownloadURL(ref(storage, `users/${id}.png`)).then((url) => {
+          setIsPending(false);
+          setLocalPhoto(url);
+        });
       } else {
         setIsPending(false);
       }
@@ -54,16 +48,15 @@ const UserAvatar: FC<IUserAvatar> = ({
     initialData();
   }, []);
 
-  console.log('==========>render');
   return (
-    <div>
+    <div className="user-avatar-container">
       {isPending ? (
         <Spinner />
       ) : (
         <div className="user-avatar">
           {!image ? (
             <div className="default">
-              <div className="avatar">{name}</div>
+              <div className="avatar">{name?.slice(0, 1)}</div>
             </div>
           ) : (
             <img src={image} alt="user logo" />

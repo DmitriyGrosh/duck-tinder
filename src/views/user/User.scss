@@ -1,0 +1,19 @@
+.user {
+	height: 100%;
+	padding: 0 50px;
+	background-color: #21222D;
+	display: flex;
+
+	.left-side {
+		//overflow-y: scroll;
+		flex: 1;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.right-side {
+		flex: 1;
+	}
+}

@@ -6,7 +6,7 @@ import React, {
   useState,
   useEffect,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Button from '../../components/button';
 import Input from '../../components/input';
@@ -110,6 +110,14 @@ const Auth: FC<IAuth> = ({ callback, isLogin }) => {
       navigate('/');
     }
   }, [isNavigate]);
+
+  useEffect(() => {
+    setErrors({
+      email: '',
+      password: '',
+      name: '',
+    });
+  }, [isLogin]);
 
   return (
     <div className="auth-container">
