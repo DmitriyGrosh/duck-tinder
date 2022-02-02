@@ -14,6 +14,7 @@ const AuthContainer: FC = ({ children }) => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        console.log('==========>user', user);
         const payload: IUser = {
           id: user.uid,
           errors: null,

@@ -18,23 +18,25 @@ export const handleRegister = async (
   const auth = getAuth();
   await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+      const randomName = Math.random().toString(36);
       const { user } = userCredential;
       updateProfile(user, {
-        displayName: name,
+        displayName: name ?? randomName,
       });
 
       const payload: IUser = {
         errors: null,
-        name: name!,
+        name: name ?? randomName,
         email: user.email,
         authToken: user.uid,
         id: user.uid,
       };
 
       setDoc(doc(db, 'users', user.uid), {
-        name,
+        name: name ?? randomName,
         email: user.email,
         id: user.uid,
+        isPhoto: false,
       });
 
       dispatch(asyncSaveUser(payload));
