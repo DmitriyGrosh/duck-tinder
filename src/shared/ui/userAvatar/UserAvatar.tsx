@@ -1,14 +1,15 @@
 import React, { Dispatch, FC, SetStateAction, useEffect } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { ref, getDownloadURL } from 'firebase/storage';
-import { db, storage } from '../../firebase/firebase';
+import { db, storage } from '../../../firebase/firebase';
 
-import { useAppSelector } from '../../redux/hooks';
+import { useAppSelector } from '../../../redux/hooks';
 
-import { IUserResponse } from '../../views/user/User';
+import { IUserResponse } from '../../../views/user/User';
+
+import Spinner from '../spinner/Spinner';
 
 import './UserAvatar.scss';
-import Spinner from '../spinner/Spinner';
 
 interface IUserAvatar {
   image: string | null;

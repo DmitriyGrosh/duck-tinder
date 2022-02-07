@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { collection, where, query, getDocs } from '@firebase/firestore';
-import ChatLine from '../chatLine';
+import ChatLine from '../../shared/ui/chatLine';
 
 import { db } from '../../firebase/firebase';
 import { useAppSelector } from '../../redux/hooks';

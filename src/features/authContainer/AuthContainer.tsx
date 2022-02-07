@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-import Wrapper from '../wrapper';
+import Wrapper from '../../shared/ui/wrapper';
 import { useAppDispatch } from '../../redux/hooks';
 import { saveUser } from '../../redux/actions/user';
 import { IUser } from '../../redux/reducers/user';

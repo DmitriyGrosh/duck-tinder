@@ -8,8 +8,8 @@ import React, {
 } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import Button from '../../components/button';
-import Input from '../../components/input';
+import Button from '../../shared/ui/button';
+import Input from '../../shared/ui/input';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import './Auth.scss';

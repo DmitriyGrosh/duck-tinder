@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Sidebar from '../../components/sidebar';
+import Sidebar from '../../features/sidebar';
 
-import Wrapper from '../../components/wrapper';
+import Wrapper from '../../shared/ui/wrapper';
 
 const Main = () => {
   return (

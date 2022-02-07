@@ -1,0 +1,14 @@
+.block {
+	padding: 5px 0;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	.block-title {
+		color: black;
+	}
+
+	.block-content {
+		color: gray;
+	}
+}

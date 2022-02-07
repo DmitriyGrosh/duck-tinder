@@ -1,19 +1,29 @@
 .user {
 	height: 100%;
-	padding: 0 50px;
+	padding: 60px;
 	background-color: #21222D;
 	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	gap: 30px;
 
-	.left-side {
-		//overflow-y: scroll;
-		flex: 1;
-
-		&::-webkit-scrollbar {
-			display: none;
-		}
+	.flex-line {
+		width: 100%;
+		display: flex;
+		gap: 30px;
 	}
 
-	.right-side {
-		flex: 1;
+	.flex-column {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.add {
+		cursor: pointer;
+	}
+
+	.edit {
+		cursor: pointer;
 	}
 }
