@@ -22,6 +22,7 @@ const User = () => {
         <PersonalDetail />
         <Academy />
         <SocialNetworks />
+        <div></div>
       </div>
     </div>
   );
