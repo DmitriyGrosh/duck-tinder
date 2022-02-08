@@ -19,8 +19,6 @@ const SocialNetworks = () => {
           <FontAwesomeIcon icon={faPen} size="lg" />
         </div>
       </List>
-      <div>
-      </div>
     </UserContainer>
   );
 };
