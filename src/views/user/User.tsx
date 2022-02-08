@@ -21,8 +21,8 @@ const User = () => {
       <div className="flex-line">
         <PersonalDetail />
         <Academy />
-        <SocialNetworks />
       </div>
+      <SocialNetworks />
     </div>
   );
 };
