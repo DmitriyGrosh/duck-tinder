@@ -31,14 +31,18 @@ a img {
 
 :root {
   --background: rgba(62, 58, 80, 1);
-  --text-primary: black;
+  --text-primary: white;
   --text-secondary: royalblue;
   --accent: purple;
 }
 
 [data-theme='dark'] {
   --background: white;
-  --text-primary: white;
+  --text-primary: black;
   --text-secondary: grey;
   --accent: darkred;
+}
+
+p, span {
+  color: var(--text-primary);
 }
