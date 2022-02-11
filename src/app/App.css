@@ -1,3 +1,11 @@
+button {
+  color: var(--text-primary);
+  background-color: var(--background);
+  border: 2px var(--text-primary) solid;
+  float: right;
+  transition: all .5s;
+}
+
 .test {
   padding-top: 50px;
 }

@@ -5,14 +5,25 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { handleLogout } from '../../firebase/logout';
 
 import './Header.scss';
+import {
+  useLocalStorage,
+  switchTheme,
+} from '../../shared/hooks/useLocalStorage';
 
 const Header: FC = () => {
   const dispatch = useAppDispatch();
   const isAuth = useAppSelector((state) => state.user.authToken);
-  console.log('==========>isAuth', isAuth);
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [theme, setTheme] = useLocalStorage(
+    'theme',
+    defaultDark ? 'dark' : 'light'
+  );
 
   return (
-    <div className="header">
+    <div data-theme={theme} className="header">
+      <button onClick={() => switchTheme(theme, setTheme)}>
+        Switch to {theme !== 'light' ? 'Light' : 'Dark'}
+      </button>
       <div className="header-container">
         {!isAuth ? (
           <div className="auth">

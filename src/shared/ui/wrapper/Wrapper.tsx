@@ -10,7 +10,7 @@ interface IWrapper {
 }
 
 const Wrapper: FC<IWrapper> = ({ children, isHeader, className }) => (
-  <div className={`wrapper ${className}`}>
+  <div className={className ? `wrapper ${className}` : 'wrapper'}>
     {isHeader && <Header />}
     {children}
   </div>
