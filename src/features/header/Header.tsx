@@ -7,29 +7,21 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { handleLogout } from '../../firebase/logout';
 
 import Switch from '../../shared/ui/switch';
-import {
-  useLocalStorage,
-  switchTheme,
-} from '../../shared/hooks/useLocalStorage';
+import { switchTheme } from '../../shared/hooks/useLocalStorage';
 
 import './Header.scss';
 
-const Header: FC = () => {
+interface IHeader {
+  theme: string;
+  setTheme: (value: string) => void;
+}
+
+const Header: FC<IHeader> = ({ theme, setTheme }) => {
   const dispatch = useAppDispatch();
   const isAuth = useAppSelector((state) => state.user.authToken);
-  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  console.log(
-    '==========>window.matchMedia()',
-    window.matchMedia('(prefers-color-scheme: dark)')
-  );
-  console.log('==========>defaultDark', defaultDark);
-  const [theme, setTheme] = useLocalStorage(
-    'theme',
-    defaultDark ? 'dark' : 'light'
-  );
 
   return (
-    <div data-theme={theme} className="header">
+    <div className="header">
       <div className="header-container">
         {!isAuth ? (
           <div className="auth">

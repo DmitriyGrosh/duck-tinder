@@ -6,9 +6,9 @@ import Wrapper from '../../shared/ui/wrapper';
 
 const Main = () => {
   return (
-    <Wrapper className="flexible" isHeader={false}>
+    <div>
       <Sidebar />
-    </Wrapper>
+    </div>
   );
 };
 
