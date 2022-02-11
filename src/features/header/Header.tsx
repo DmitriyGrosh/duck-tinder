@@ -1,14 +1,18 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { handleLogout } from '../../firebase/logout';
 
-import './Header.scss';
+import Switch from '../../shared/ui/switch';
 import {
   useLocalStorage,
   switchTheme,
 } from '../../shared/hooks/useLocalStorage';
+
+import './Header.scss';
 
 const Header: FC = () => {
   const dispatch = useAppDispatch();
@@ -21,9 +25,6 @@ const Header: FC = () => {
 
   return (
     <div data-theme={theme} className="header">
-      <button onClick={() => switchTheme(theme, setTheme)}>
-        Switch to {theme !== 'light' ? 'Light' : 'Dark'}
-      </button>
       <div className="header-container">
         {!isAuth ? (
           <div className="auth">
@@ -44,13 +45,24 @@ const Header: FC = () => {
                 Home
               </NavLink>
             </div>
-            <NavLink
-              onClick={() => handleLogout(dispatch)}
-              className="link"
-              to="logout"
-            >
-              Log out
-            </NavLink>
+            <div className="second">
+              <Switch
+                isStart={false}
+                onClick={() => switchTheme(theme, setTheme)}
+              >
+                <FontAwesomeIcon
+                  icon={theme === 'light' ? faSun : faMoon}
+                  size="lg"
+                />
+              </Switch>
+              <NavLink
+                onClick={() => handleLogout(dispatch)}
+                className="link"
+                to="logout"
+              >
+                Log out
+              </NavLink>
+            </div>
           </>
         )}
       </div>
