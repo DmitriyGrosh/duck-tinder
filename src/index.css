@@ -34,15 +34,28 @@ a img {
   --text-primary: white;
   --text-secondary: royalblue;
   --accent: purple;
+  --input: #2196F3;
 }
 
 [data-theme='dark'] {
+  --input: #3e3a50;
   --background: white;
   --text-primary: black;
   --text-secondary: grey;
   --accent: darkred;
 }
 
-p, span {
+p, span, h3 {
   color: var(--text-primary);
+}
+
+.portal {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+  overflow: hidden;
 }
