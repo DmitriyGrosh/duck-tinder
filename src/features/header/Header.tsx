@@ -18,6 +18,11 @@ const Header: FC = () => {
   const dispatch = useAppDispatch();
   const isAuth = useAppSelector((state) => state.user.authToken);
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  console.log(
+    '==========>window.matchMedia()',
+    window.matchMedia('(prefers-color-scheme: dark)')
+  );
+  console.log('==========>defaultDark', defaultDark);
   const [theme, setTheme] = useLocalStorage(
     'theme',
     defaultDark ? 'dark' : 'light'
@@ -47,6 +52,7 @@ const Header: FC = () => {
             </div>
             <div className="second">
               <Switch
+                isActive={theme === 'light'}
                 isStart={false}
                 onClick={() => switchTheme(theme, setTheme)}
               >

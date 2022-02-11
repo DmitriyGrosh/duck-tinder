@@ -30,14 +30,14 @@ a img {
 }
 
 :root {
-  --background: white;
+  --background: rgba(62, 58, 80, 1);
   --text-primary: black;
   --text-secondary: royalblue;
   --accent: purple;
 }
 
 [data-theme='dark'] {
-  --background: black;
+  --background: white;
   --text-primary: white;
   --text-secondary: grey;
   --accent: darkred;

@@ -4,10 +4,11 @@ import './Switch.scss';
 
 interface ISwitch {
   isStart: boolean;
+  isActive: boolean;
   onClick: () => void;
 }
 
-const Switch: FC<ISwitch> = ({ isStart, onClick, children }) => {
+const Switch: FC<ISwitch> = ({ isStart, onClick, isActive, children }) => {
   return (
     <div
       className={
@@ -15,7 +16,7 @@ const Switch: FC<ISwitch> = ({ isStart, onClick, children }) => {
       }
     >
       <label className="switch">
-        <input onChange={onClick} type="checkbox" />
+        <input checked={isActive} onChange={onClick} type="checkbox" />
         <span className="slider round" />
       </label>
       {children}
